@@ -24,8 +24,6 @@ mongoose.connection.on("connected", () => {
 });
 
 // routes
-app.use("/auth", authController);
-app.use("/users/:userId/foods", foodsController);
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
@@ -43,7 +41,10 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use(passUserToView);
 app.use("/auth", authController);
+app.use(isSignedIn);
+app.use("/users/:userId/foods", foodsController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
