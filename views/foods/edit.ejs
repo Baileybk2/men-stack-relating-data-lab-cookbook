@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editing <%= food.foodName %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit <%= food.foodName %></h1>
+    <form
+      action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT"
+      method="POST"
+    >
+      <label for="foodName">Food:</label>
+      <input
+        type="text"
+        name="foodName"
+        id="foodName"
+        value="<%= food.foodName %>"
+      />
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="meat" <%= food.category === "meat" ? "selected" : "" %>
+            >
+            Meat
+        </option>
+        <option value="vegetable" <%= food.category === "vegetable" ? "selected" : "" %>
+            >
+            Vegetable
+        </option>
+        <option value="grain" <%= food.category === "grain" ? "selected" : "" %>
+            >
+            Grain
+        </option>
+        <option value="dairy" <%= food.category === "dairy" ? "selected" : "" %>
+            >
+            Dairy
+        </option>
+        <option value="condiment" <%= food.category === "condiment" ? "selected" : "" %>
+            >
+            Condiment
+        </option>
+        <option value="fruit" <%= food.category === "fruit" ? "selected" : "" %>
+            >
+            Fruit
+        </option>
+        <option value="spice" <%= food.category === "spice" ? "selected" : "" %>
+            >
+            Spice
+        </option>
+      </select>
+      <label for="notes">Notes:</label>
+    <textarea name="notes" id="notes"><%= food.notes %></textarea>
+    <button type="submit">Update Food Item</button>
+    </form>
+  </body>
+</html>
