@@ -6,6 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <%- include('./partials/_navbar.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= food.foodName %></h1>
+    <p>Category: <%= food.category %></p>
+    <p>Notes: <%= food.notes %></p>
+    <form
+      action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button type="submit">Delete this food item</button>
+    </form>
   </body>
 </html>
