@@ -42,6 +42,11 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  next();
+});
+
 app.use("/users", usersController);
 app.use(passUserToView);
 app.use("/auth", authController);
