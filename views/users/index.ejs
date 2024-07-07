@@ -7,11 +7,11 @@
   </head>
   <body>
     <h1>Explore Our Community</h1>
-
-    <%- console.log("MY OBVIOUS MESSAGE", users) %>
     <ul>
       <% users.forEach((user) => { %>
-      <li><%= user.username %></li>
+      <li>
+        <a href="/users/<%= user._id %>"><%= user.username %></a>
+      </li>
       <% }); %>
     </ul>
   </body>
